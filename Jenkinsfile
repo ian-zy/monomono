@@ -13,12 +13,11 @@ def runCIOnMonoRepo() {
   println("runCIOnMonoRepo")
   node {
     stage('checkout') {
-      def scmVars = checkout scm
+      scmVars = checkout scm
       println(scmVars)
       def commitHash = scmVars.GIT_COMMIT
       println(commitHash)
       sh "printenv"
-      git branch: env.BRANCH_NAME, url: 'https://github.com/ian-zy/monomono.git'
       def files = currentBuild.changeSets
                 .collectMany { it.items }
                 .collectMany { it.affectedFiles }

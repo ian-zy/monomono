@@ -1,2 +1,2 @@
 println('hello jenkins')
-println(env)
+println(currentBuild.changeSets)
